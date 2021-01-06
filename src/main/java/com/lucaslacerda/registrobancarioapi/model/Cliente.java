@@ -1,5 +1,6 @@
 package com.lucaslacerda.registrobancarioapi.model;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 import javax.persistence.CascadeType;
@@ -12,14 +13,12 @@ import javax.persistence.Table;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@SuppressWarnings("deprecation")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -27,8 +26,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "cliente")
 public class Cliente{
 
+	
 	  @Id
-	  @OneToMany(cascade = CascadeType.ALL)
 	  @Column(name="cliente_id")
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Long id;

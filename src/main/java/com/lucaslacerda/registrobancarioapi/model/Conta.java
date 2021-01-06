@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 import javax.persistence.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,25 +14,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@SuppressWarnings("deprecation")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
 @Table(name = "conta")
-public class Conta implements Serializable {
+public class Conta{
 
 	  public Conta(Long cliente, float saldo) {
 		this.cliente = cliente;
 		this.saldo = saldo;
 	}
 
-	@Id
+	  @Id
 	  @Column(name="conta_id")
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Long id;
 	  
-	  @ManyToOne
+	  @ManyToOne(targetEntity = Cliente.class)
 	  @JoinColumn(name = "cliente",referencedColumnName = "cliente_id",nullable = false)
 	  private Long cliente;
 	  
