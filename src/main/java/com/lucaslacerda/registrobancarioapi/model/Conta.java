@@ -21,10 +21,14 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "conta")
-@EntityListeners(AuditingEntityListener.class)
 public class Conta implements Serializable {
 
-	  @Id
+	  public Conta(Long cliente, float saldo) {
+		this.cliente = cliente;
+		this.saldo = saldo;
+	}
+
+	@Id
 	  @Column(name="conta_id")
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Long id;
@@ -35,4 +39,30 @@ public class Conta implements Serializable {
 	  
 	  @Column(name="saldo")
 	  private float saldo = 0;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Long cliente) {
+		this.cliente = cliente;
+	}
+
+	public float getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(float saldo) {
+		this.saldo = saldo;
+	}
+	  
+	  
 	}
