@@ -3,6 +3,10 @@ package com.lucaslacerda.registrobancarioapi.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.ParameterExpression;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,16 +26,15 @@ public class ContaController {
 	ClienteRepository clienteRepository;
 	@Autowired
 	ContaRepository contaRepository;
-	Cliente cliente = new Cliente();
 	
 	//Abertura de conta
 	@PostMapping("/abrirconta")
-	public Conta aberturaConta(@RequestBody Conta conta) {
+	public Conta aberturaConta(@RequestBody Cliente cliente) {
 		
 		cliente = cadastraCliente(cliente);
-		conta.setCliente(cliente.getId());
-		conta.setSaldo(0);
 		
+		Conta conta = new Conta(cliente.getId(),0);
+
 		return contaRepository.save(conta);
 	}
 	

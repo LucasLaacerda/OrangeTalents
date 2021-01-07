@@ -21,22 +21,32 @@ import lombok.NoArgsConstructor;
 @Table(name = "conta")
 public class Conta{
 
-	  public Conta(Long cliente, float saldo) {
+	 
+
+	  public Conta() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Conta(Long cliente, float saldo) {
+		super();
 		this.cliente = cliente;
 		this.saldo = saldo;
 	}
 
-	  @Id
+
+   	  @Id
 	  @Column(name="conta_id")
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Long id;
 	  
-	  @ManyToOne(targetEntity = Cliente.class)
-	  @JoinColumn(name = "cliente",referencedColumnName = "cliente_id",nullable = false)
+	  //@ManyToOne(targetEntity = Cliente.class,fetch = FetchType.LAZY)
+	 // @JoinColumn(name = "cliente",referencedColumnName = "cliente_id")
 	  private Long cliente;
 	  
 	  @Column(name="saldo")
 	  private float saldo = 0;
+
 
 	public Long getId() {
 		return id;

@@ -26,7 +26,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "cliente")
 public class Cliente{
 
-	
 	  @Id
 	  @Column(name="cliente_id")
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,6 +42,8 @@ public class Cliente{
 	  
 	  @Column(name="nascimento",nullable = false)
 	  private String nascimento;
+
+	
 
 	public Long getId() {
 		return id;
